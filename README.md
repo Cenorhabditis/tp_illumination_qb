@@ -14,5 +14,5 @@
 
 > - **scripts**
 >
-> This section contain the different scripts used to transformed the raw data into results.
+> This section contain the different scripts used to transformed the raw data into results. Ths section is saved on git.
 
