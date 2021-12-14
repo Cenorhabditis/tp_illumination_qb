@@ -12,6 +12,10 @@
 >
 > This section contain the results and is not linked to git.
 
+> - **intermediary_results**
+>
+> This section contain the intermediary results and is not linked to git.
+
 > - **scripts**
 >
 > This section contain the different scripts used to transformed the raw data into results. Ths section is saved on git.
