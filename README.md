@@ -30,3 +30,25 @@ Identification of the transcripts of the differents samples was assessed thanks 
 
 This bioinformatic analysis is then dedicated to the obtained Illumina reads analysis.
 
+
+### **Timeline of the Analysis**
+
+##### 1. **Data recuperation**
+  - 
+  
+##### 2. **Data organisation**
+  -
+
+##### 3. **Data quality control**
+  -
+  
+##### 4. **Index creation**
+  -
+  
+##### 5. **Data trim**
+  -
+  
+##### 6. **Data quantification**
+  -
+
+
