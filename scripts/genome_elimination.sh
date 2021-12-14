@@ -15,5 +15,8 @@ wget -r -nH --user='igfl-UE_NGS_2021' --password='UE_NGS_2021'  ftp://sharegate-
 # Trim of the data (30 - 82 bp)
 #    -> see script "genome_elimintation_trim"
 
+# Index creation
+#    -> see script "genome_elimination_index_creation"
+
 
 
