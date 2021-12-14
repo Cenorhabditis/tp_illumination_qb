@@ -9,4 +9,11 @@ wget -r -nH --user='igfl-UE_NGS_2021' --password='UE_NGS_2021'  ftp://sharegate-
 #   ->  See script "genome_elimination_organisation.sh"
 
 
+# Quality analysis
+#    -> see script "genome_elimination_quality_control"
+
+# Trim of the data (30 - 82 bp)
+#    -> see script "genome_elimintation_trim"
+
+
 
