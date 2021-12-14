@@ -20,3 +20,13 @@
 >
 > This section contain the different scripts used to transformed the raw data into results. Ths section is saved on git.
 
+
+### **The project**
+
+This project was initiated by the Dellatre lab. 
+This project aim to identify genes that are deferentially expressed at different stages of genome elimination of *Mesorhabditis belari*. 
+To do so, genome extraction were preceded at 6 time points of the *M.belari* development, 2 before genome elimination, 2 during genome elimination and 2 after genome elimination. Sample extraction were made in duplicate, thus 12 samples were obtained.
+Identification of the transcripts of the differents samples was assessed thanks to Illumina sequencing.
+
+This bioinformatic analysis is then dedicated to the obtained Illumina reads analysis.
+
