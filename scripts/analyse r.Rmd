@@ -112,4 +112,20 @@ subset(res_df, log2FoldChange > 20 & baseMean > 10 & padj < 0.05)
 ```{r}
 summary(res)
 ```
+### Looking at genes expression through time
+
+for mbelari.g2944
+```{r plotcounts}
+
+plotCounts(dds, gene="mbelari.g2944", intgroup="age")
+
+```
+
+for mbelari.g8166
+```{r}
+
+plotCounts(dds, gene="mbelari.g8166", intgroup="age")
+
+```
+
 
