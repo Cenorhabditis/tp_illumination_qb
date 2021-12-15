@@ -24,7 +24,7 @@ sampleTable
 ```
 
 
-### Importation des données
+### Data import
 
 ```{r tximport}
 
