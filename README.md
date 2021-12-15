@@ -26,9 +26,9 @@
 This project was initiated by the Dellatre lab. 
 This project aim to identify genes that are deferentially expressed at different stages of genome elimination of *Mesorhabditis belari*. 
 To do so, genome extraction were preceded at 6 time points of the *M.belari* development, 2 before genome elimination, 2 during genome elimination and 2 after genome elimination. Sample extraction were made in duplicate, thus 12 samples were obtained.
-Identification of the transcripts of the differents samples was assessed thanks to Illumina sequencing.
+Identification of the transcripts of the different samples was assessed thanks Illumina reads mapping to *M.belari* reference transcriptome.
 
-This bioinformatic analysis is then dedicated to the obtained Illumina reads analysis.
+After identification, searching a high expressed genes during the genome elimination phase (4 cells and 8 cells developmental stage) but not before (1 cell / 2 cells developmental stage) or after (~60 cells and ~100 cells developmental stage).
 
 
 ## **Timeline of the Analysis**
