@@ -210,12 +210,13 @@ head(de_genes_with_annot)
 
 Recherche des 40 gene avec des upregulation d'expression les plus significatives durant l'élimination du génome:
 
-```{r fig.height=12, fig.width=12}
+```{r fig.height=6.5, fig.width=12}
 
 significatif <- subset(res_df, log2FoldChange > 0 & baseMean > 10 & padj < 0.00000005)
 significatif
 
 plot_counts(significatif$gene_ID[1:40])
+plot_counts(significatif$gene_ID[41:57])
 
 ```
 
@@ -246,7 +247,8 @@ Recherche de gene downregulé:
 significatif_down <- subset(res_df, log2FoldChange < 0 & baseMean > 10 & padj < 0.00000005)
 significatif_down
 
-plot_counts(significatif_down$gene_ID[40:55])
+plot_counts(significatif_down$gene_ID[1:40])
+plot_counts(significatif_down$gene_ID[41:55])
 
 ```
 
@@ -260,6 +262,57 @@ comparaison_down <- genes_annotation[genes_annotation$wbps_gene_id %in% signific
 comparaison_down
 
 ```
+
+
+### Mise en place de controls:
+
+Recherche de l'expression des gènes d'actine chez M.belari.
+
+```{r fig.height=6.5, fig.width=10}
+
+toMatch = c("actin")
+recherche <- genes_annotation[grep(paste(toMatch,collapse="|"), genes_annotation$interpro_short_description, ignore.case = T),]
+
+recherche
+
+plot_counts(unique (recherche$wbps_gene_id[1:40]))
+plot_counts(unique (recherche$wbps_gene_id[41:78]))
+
+```
+
+
+### Investigation des pattern d'expression en escaliers dans les gènes up-régulés:
+
+
+```{r fig.height=6.5, fig.width=10}
+
+plot_counts(significatif$gene_ID[1:30])
+plot_counts(significatif$gene_ID[31:57])
+
+```
+Escaliers montant:
+  - mbelari.g13224
+  - mbelari.g14094
+  - mbelari.g20029
+  - mbelari.g20970
+  - mbelari.g21476
+  - mbelari.g24692
+  - mbelari.g3835
+  - mbelari.g5375
+  - mbelari.g8624
+  - mbelari.g9240
+  - mbelari.g9687
+  
+Escaliers descendants:
+  - mbelari.g11390
+  - mbelari.g12023
+  - mbelari.g14022
+  - mbelari.g14833
+  - mbelari.g23272
+  - mbelari.g243
+  - mbelari.g270
+
+
 
 
 
