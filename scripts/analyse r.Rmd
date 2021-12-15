@@ -239,5 +239,27 @@ recherche
 
 ```
 
+Recherche de gene downregulé:
+
+```{r fig.height=8, fig.width=13}
+
+significatif_down <- subset(res_df, log2FoldChange < 0 & baseMean > 10 & padj < 0.00000005)
+significatif_down
+
+plot_counts(significatif_down$gene_ID[40:55])
+
+```
+
+On a trouve le g8003:
+Je cherche les anotations liées:
+
+```{r}
+
+comparaison_down <- genes_annotation[genes_annotation$wbps_gene_id %in% significatif_down$gene_ID,]
+
+comparaison_down
+
+```
+
 
 
