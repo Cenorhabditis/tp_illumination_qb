@@ -94,6 +94,7 @@ plotMA(res, ylim=c(-28,28))
 
 ### Upregulated genes during eliminations identification
 
+Creation of a dataframe from res matrix.
 ```{r dataframe}
 
 res_df <- as.data.frame(res)
@@ -101,4 +102,14 @@ head(res_df)
 
 ```
 
+Identification of the most upregulated genes during elimination:
+```{r}
+
+subset(res_df, log2FoldChange > 20 & baseMean > 10 & padj < 0.05)
+
+```
+
+```{r}
+summary(res)
+```
 
