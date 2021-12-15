@@ -1,0 +1,19 @@
+---
+title: "TP NGS"
+author: Quentin B
+date: 15/12/2021
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analyse R - Genome Elimination *M.belari*
+
+
+
+```{r }
+
+```
+
