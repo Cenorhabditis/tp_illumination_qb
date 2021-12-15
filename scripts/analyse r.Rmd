@@ -56,10 +56,7 @@ txi.kallisto <- tximport(files, type = "kallisto", tx2gene = tx2gene)
 
 library(DESeq2)
 
-sampleTable$during = "not during"
-sampleTable$during[sampleTable$timing == "during"] = "during"
-
-dds <- DESeqDataSetFromTximport(txi.kallisto, sampleTable, ~ during )
+dds <- DESeqDataSetFromTximport(txi.kallisto, sampleTable, ~ elimination )
 dds <- DESeq(dds)
 vsd <- vst(dds, blind=FALSE)
 
@@ -71,6 +68,36 @@ vsd <- vst(dds, blind=FALSE)
 ```{r PCA}
 
 plotPCA(vsd, intgroup=c("age"))
+
+```
+
+```{r res}
+
+res <- results(dds)
+
+```
+
+### MA-plot
+
+```{r}
+
+resultsNames(dds)
+
+```
+
+
+```{r MA-plot}
+
+plotMA(res, ylim=c(-28,28))
+
+```
+
+### Upregulated genes during eliminations identification
+
+```{r dataframe}
+
+res_df <- as.data.frame(res)
+head(res_df)
 
 ```
 
