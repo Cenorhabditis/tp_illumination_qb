@@ -2,7 +2,7 @@
 ### *Quentin's work (Cenorhabditis)*
 
 
-## **This project is organised in 3 sections:**
+## **This project is organised in 4 sections:**
 
 > - **data**
 >
