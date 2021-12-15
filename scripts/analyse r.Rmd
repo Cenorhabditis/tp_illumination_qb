@@ -312,7 +312,38 @@ Escaliers descendants:
   - mbelari.g243
   - mbelari.g270
 
+```{r}
+
+escalier_montant = c("mbelari.g13224", "mbelari.g14094", "mbelari.g20029", "mbelari.g20970", "mbelari.g21476", "mbelari.g24692", "mbelari.g3835", "mbelari.g5375", "mbelari.g8624", "mbelari.g9240", "mbelari.g9687")
+ 
+escalier_montant_df <- genes_annotation[genes_annotation$wbps_gene_id %in% escalier_montant,]
+
+escalier_montant_df_filter = subset(escalier_montant_df, caelegprjna13758_gene_name != "")
+
+escalier_montant_df_filter
+
+escalier_montant_celegans <- unique(escalier_montant_df_filter$caelegprjna13758_gene_name)
+
+cat(escalier_montant_celegans, sep="\n")
+
+```
 
 
+### Analyse interactomique des gènes up-regulés:
+
+```{r}
+
+interactome_up_df <- genes_annotation[genes_annotation$wbps_gene_id %in% escalier_montant,]
+interactome_up_df
+
+interactome_up_filter = subset(interactome_up_df, caelegprjna13758_gene_name != "")
+interactome_up_filter
+
+interactome_up <- unique(interactome_up_filter$caelegprjna13758_gene_name)
+interactome_up
+
+cat(interactome_up, sep="\n")
+
+```
 
 
