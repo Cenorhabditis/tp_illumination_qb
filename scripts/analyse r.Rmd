@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Analyse R - Genome Elimination *M.belari*
+# Analyse R - Genome Elimination *M.belari*
 
 
 ### Building of metadata table
@@ -48,4 +48,30 @@ tx2gene <- data.frame(tx=transcript_names,
 txi.kallisto <- tximport(files, type = "kallisto", tx2gene = tx2gene)
 
 ```
+
+
+### Building the DESeq2 object
+
+```{r DESeq2}
+
+library(DESeq2)
+
+sampleTable$during = "not during"
+sampleTable$during[sampleTable$timing == "during"] = "during"
+
+dds <- DESeqDataSetFromTximport(txi.kallisto, sampleTable, ~ during )
+dds <- DESeq(dds)
+vsd <- vst(dds, blind=FALSE)
+
+```
+
+
+### Principal component analysis (PCA)
+
+```{r PCA}
+
+plotPCA(vsd, intgroup=c("age"))
+
+```
+
 
