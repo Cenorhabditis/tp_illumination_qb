@@ -102,7 +102,7 @@ head(res_df)
 
 ```
 
-Identification of the most upregulated genes during elimination:
+###Identification of the most upregulated genes during elimination:
 ```{r}
 
 subset(res_df, log2FoldChange > 20 & baseMean > 10 & padj < 0.05)
@@ -127,5 +127,117 @@ for mbelari.g8166
 plotCounts(dds, gene="mbelari.g8166", intgroup="age")
 
 ```
+
+
+### Code de Carine
+
+#### fonction R plot_counts
+
+```{r plot counts}
+
+plot_counts <- function(X) {
+count_df <- counts(dds, normalized=T)
+count_dfl = count_df %>% as.data.frame() %>%  rownames_to_column("gene_ID") %>% pivot_longer(-gene_ID,names_to = "sample_ID", values_to = "norm_counts")
+
+
+df_tmp = subset(count_dfl, gene_ID %in% X) %>% left_join(sampleTable)
+
+df_tmp <- df_tmp %>% mutate(age = factor(age, levels = unique(age)),
+                            gene_ID = factor(gene_ID,levels=X))
+
+
+ggplot(df_tmp, aes(x=age, y = norm_counts, col = age)) + theme_bw() +
+  geom_point() +
+  facet_wrap(~gene_ID, scales = "free_y" ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+}
+
+```
+
+
+
+#### pour l utiliser
+
+```{r fig.height=12, fig.width=12}
+
+genes_list = subset(res_df, log2FoldChange < -20 & baseMean > 10 & padj < 0.05) %>% rownames_to_column("gene_ID")
+genes_list$gene_ID
+
+plot_counts(genes_list$gene_ID)
+
+
+```
+
+#### recuperer les annotations
+
+
+```{r}
+#BiocManager::install("biomaRt") # only one time
+
+library(biomaRt)
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+genes_annotation <- getBM(mart = mart,
+                          filters = c("species_id_1010"),
+                          value = list("mebelaprjeb30104"),
+                          attributes = c("wbps_gene_id",
+                                         "caelegprjna13758_gene_name",
+                                         "caelegprjna13758_homolog_ensembl_peptide",
+                                         "interpro_id",
+                                         "interpro_short_description")
+)
+
+```
+
+```{r Affichage}
+
+genes_annotation[1:15,]
+
+```
+
+
+```{r}
+res_df  <- res %>% as.data.frame() %>% rownames_to_column("gene_ID")
+genes_list <- subset(res_df, log2FoldChange < -5 & padj <0.05) %>% arrange(padj) %>% head(20)
+de_genes_with_annot <- genes_annotation[genes_annotation$wbps_gene_id %in% genes_list$gene_ID,]
+
+head(genes_list)
+head(de_genes_with_annot)
+```
+
+
+# Test code Quentin
+
+Recherche des 40 gene avec des upregulation d'expression les plus significatives durant l'élimination du génome:
+
+```{r fig.height=12, fig.width=12}
+
+significatif <- subset(res_df, log2FoldChange > 0 & baseMean > 10 & padj < 0.00000005)
+significatif
+
+plot_counts(significatif$gene_ID[1:40])
+
+```
+
+Comparaison des annotations des 40 gènes isolés
+```{r}
+
+comparaison <- genes_annotation[genes_annotation$wbps_gene_id %in% significatif$gene_ID,]
+
+comparaison
+
+```
+
+Chercher de domaines protéiques d'interêts:
+
+```{r}
+
+toMatch = c("exonuclease", "transposase", "helicase")
+recherche <- comparaison[grep(paste(toMatch,collapse="|"), comparaison$interpro_short_description, ignore.case = T),]
+
+recherche
+
+```
+
 
 
