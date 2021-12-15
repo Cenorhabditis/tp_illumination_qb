@@ -27,7 +27,7 @@ This project was initiated by the Dellatre lab.
 This project aim to identify genes that are deferentially expressed at different stages of genome elimination of *Mesorhabditis belari*. 
 To do so, genome extraction were preceded at 6 time points of the *M.belari* development, 2 before genome elimination, 2 during genome elimination and 2 after genome elimination. Sample extraction were made in duplicate, thus 12 samples were obtained.
 
- ![transcriptomic_screen, the image](/document/transcriptomic_screen.png)
+ ![transcriptomic_screen](home/mydatalocal/tp_illumination_qb/document/transcriptomic_screen.png)
 
 Identification of the transcripts of the different samples was assessed thanks Illumina reads mapping to *M.belari* reference transcriptome.
 
