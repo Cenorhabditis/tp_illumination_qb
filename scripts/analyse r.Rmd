@@ -212,11 +212,21 @@ Recherche des 40 gene avec des upregulation d'expression les plus significatives
 
 ```{r fig.height=6.5, fig.width=12}
 
-significatif <- subset(res_df, log2FoldChange > 0 & baseMean > 10 & padj < 0.00000005)
+significatif <- subset(res_df, log2FoldChange > 2 & baseMean > 10 & padj < 0.0005) %>% arrange(padj)
 significatif
 
 plot_counts(significatif$gene_ID[1:40])
 plot_counts(significatif$gene_ID[41:57])
+
+up_reg_df <- genes_annotation[genes_annotation$wbps_gene_id %in% significatif$gene_ID,]
+up_reg_df
+
+up_reg_filter = subset(up_reg_df, caelegprjna13758_gene_name != "")
+
+up_reg_unique <- unique(up_reg_filter$caelegprjna13758_gene_name)
+up_reg_unique
+
+cat(up_reg_unique, sep="\n")
 
 ```
 
@@ -240,7 +250,7 @@ recherche
 
 ```
 
-Recherche de gene downregulé:
+### Recherche de gene downregulé:
 
 ```{r fig.height=8, fig.width=13}
 
@@ -266,6 +276,39 @@ g8003 <- subset(comparaison_down, wbps_gene_id == "mbelari.g8003")
 g8003
 
 ```
+
+Mais il y a aussi ceux là qui sont un peu moins significatifs:
+mbelari.g8003  (celui d'avant)
+mbelari.g25125
+mbelari.g22001
+mbelari.g20959
+mbelari.g24638
+mbelari.g10099
+mbelari.g9271
+mbelari.g10036
+mbelari.g18075
+mbelari.g17669
+mbelari.g25972
+mbelari.g24591
+
+```{r}
+
+down_reg <- c("mbelari.g8003", "mbelari.g25125", "mbelari.g22001", "mbelari.g20959", "mbelari.g24638", "mbelari.g10099", "mbelari.g9271", "mbelari.g10036", "mbelari.g18075", "mbelari.g17669", "mbelari.g25972",
+"mbelari.g24591")
+
+down_reg_df <- genes_annotation[genes_annotation$wbps_gene_id %in% down_reg,]
+down_reg_df
+
+down_reg_filter = subset(down_reg_df, caelegprjna13758_gene_name != "")
+
+down_reg_unique <- unique(down_reg_filter$caelegprjna13758_gene_name)
+down_reg_unique
+
+cat(down_reg_unique, sep="\n")
+
+
+```
+
 
 
 ### Mise en place de controls:
