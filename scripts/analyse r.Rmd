@@ -244,11 +244,12 @@ Recherche de gene downregulé:
 
 ```{r fig.height=8, fig.width=13}
 
-significatif_down <- subset(res_df, log2FoldChange < 0 & baseMean > 10 & padj < 0.00000005)
+significatif_down <- subset(res_df, log2FoldChange < 0 & baseMean > 10 & padj < 0.00005) %>% arrange(padj)
 significatif_down
 
 plot_counts(significatif_down$gene_ID[1:30])
 plot_counts(significatif_down$gene_ID[31:55])
+plot_counts(significatif_down$gene_ID[56:74])
 
 ```
 
