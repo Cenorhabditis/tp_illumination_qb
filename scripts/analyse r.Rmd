@@ -247,8 +247,8 @@ Recherche de gene downregulé:
 significatif_down <- subset(res_df, log2FoldChange < 0 & baseMean > 10 & padj < 0.00000005)
 significatif_down
 
-plot_counts(significatif_down$gene_ID[1:40])
-plot_counts(significatif_down$gene_ID[41:55])
+plot_counts(significatif_down$gene_ID[1:30])
+plot_counts(significatif_down$gene_ID[31:55])
 
 ```
 
@@ -258,8 +258,11 @@ Je cherche les anotations liées:
 ```{r}
 
 comparaison_down <- genes_annotation[genes_annotation$wbps_gene_id %in% significatif_down$gene_ID,]
-
 comparaison_down
+
+g8003 <- subset(comparaison_down, wbps_gene_id == "mbelari.g8003")
+
+g8003
 
 ```
 
@@ -277,6 +280,13 @@ recherche
 
 plot_counts(unique (recherche$wbps_gene_id[1:40]))
 plot_counts(unique (recherche$wbps_gene_id[41:78]))
+
+actin_filter = subset(recherche, caelegprjna13758_gene_name != "")
+actin_filter
+
+actin_celegans <- unique(actin_filter$caelegprjna13758_gene_name)
+
+cat(actin_celegans, sep="\n")
 
 ```
 
