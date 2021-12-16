@@ -358,3 +358,40 @@ cat(interactome_up, sep="\n")
 ```
 
 
+### Recherche des genes en escaliers descendants:
+
+```{r}
+
+escalier_descendant = c("mbelari.g11390", "mbelari.g12023", "mbelari.g14022", "mbelari.g14833", "mbelari.g23272", "mbelari.g243", "mbelari.g270")
+ 
+escalier_descendant_df <- genes_annotation[genes_annotation$wbps_gene_id %in% escalier_descendant,]
+
+escalier_descendant_df_filter = subset(escalier_descendant_df, caelegprjna13758_gene_name != "")
+
+escalier_descendant_df_filter
+
+escalier_descendant_celegans <- unique(escalier_descendant_df_filter$caelegprjna13758_gene_name)
+
+cat(escalier_descendant_celegans, sep="\n")
+
+```
+
+suite:
+```{r}
+
+interactome_down_df <- genes_annotation[genes_annotation$wbps_gene_id %in% escalier_descendant,]
+interactome_down_df
+
+interactome_down_filter = subset(interactome_down_df, caelegprjna13758_gene_name != "")
+interactome_down_filter
+
+interactome_down <- unique(interactome_down_filter$caelegprjna13758_gene_name)
+interactome_down
+
+cat(interactome_down, sep="\n")
+
+```
+ 
+
+
+
