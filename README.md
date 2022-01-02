@@ -29,9 +29,9 @@ To do so, genome extraction were preceded at 6 time points of the *M.belari* dev
 
  ![transcriptomic_screen](home/mydatalocal/tp_illumination_qb/document/transcriptomic_screen.png)
 
-Identification of the transcripts of the different samples was assessed thanks Illumina reads mapping to *M.belari* reference transcriptome.
+Identification of the transcripts of the different samples was assessed thanks to Illumina reads mapped to *M.belari* reference transcriptome.
 
-After identification, searching a high expressed genes during the genome elimination phase (4 cells and 8 cells developmental stage) but not before (1 cell / 2 cells developmental stage) or after (~60 cells and ~100 cells developmental stage).
+After identification, searching of differencially expressed genes during the genome elimination phase (4 cells and 8 cells developmental stage) but not before (1 cell / 2 cells developmental stage) or after (~60 cells and ~100 cells developmental stage) was done.
 
 
 ## **Timeline of the Analysis**
@@ -45,7 +45,6 @@ After identification, searching a high expressed genes during the genome elimina
 #### 3. **Data quality control**
   - See "genome_elimination_quality_control.sh" script. Used to create quality scores for each reads. Use of fastqc function but too long for day 1.
   
-  
 #### 4. **Data trim**
   - See "genome_elimination_trim.sh" script. Used to delete the low quality parts of the reads and keep only the sequence from 30 to 82 base pair.
   
@@ -55,4 +54,6 @@ After identification, searching a high expressed genes during the genome elimina
 #### 6. **Data quantification**
   - See "genome_elimination_quantification.sh" script. Used to map the clean reads to the *M.belari* index to create a compte table. We used the Kalipso program with length of 552 and Standard Deviation of 200 taken from the IGFL illumina sequencing data recap (Benjamin's report).
 
-
+#### 7. **Data analysis**
+  - Different analysis have been made and all the scripts are located in the same document: "genome_elimination.sh". 
+  - We proceded to a principal component analysis (PCA), to an identification of the genes with the most significant expression change during genome eliminatinon phase, to expression pattern comparison and to interactome analysis with the "string" database.
